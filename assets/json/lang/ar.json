@@ -1,0 +1,90 @@
+{
+    "header": {
+        "hello": "مرحباً"
+    },
+    "subheadings": {
+        "generalInfo": "البيانات الاساسية",
+        "contactAndLocation": "التواصل والمكان",
+        "media": "الصور والفيديوهات",
+        "menu": "القائمة",
+        "categories": "الأقسام",
+        "time": "الوقت",
+        "prices": "الاسعار",
+        "valuation": "التقييم"
+    },
+    "buttons": {
+        "login": "تسجيل دخول",
+        "addPlace": "اضف مكان جديد"
+    },
+    "common": {
+        "yes": "نعم",
+        "no": "لا",
+        "cancel": "إلغاء",
+        "next": "التالي",
+        "km": "كم",
+        "m": "د",
+        "recomended": "موصى به",
+        "male": "ذكر",
+        "female": "انثى",
+        "day": "يوم",
+        "all": "الكل",
+        "open": "مفتوح",
+        "openAt": "يفتح في"
+    },
+    "errors": {
+        "wrongCredentials": "البريد الإلكتروني او كلمة المرور غير صحيحة",
+        "The email must be a valid email address": "برجاء كتابة البريد الالكتروني بشكل صحيح",
+        "The email field is required": "البريد الالكتروني مطلوب",
+        "The password field is required": "كلمة المرور مطلوبة",
+        "The password must be at least 6 characters": "كلمة المرور يجب ان تكون 6 احرف على الأقل"
+    },
+    "auth": {
+        "login": "تسجيل الدخول"
+    },
+    "placeholder": {
+        "placeName": "اسم المكان",
+        "mobile": "رقم الجوال",
+        "email": "الريد الالكتروني",
+        "password": "كلمة المرور",
+        "city": "المدينة",
+        "categories": "اختر القسم",
+        "subCategories": "اختر الأقسام الفرعية",
+        "tags": "اختر الكلمات الدلالية",
+        "tel": "جوال المكان",
+        "long": "خط الطول",
+        "lat": "خط العرض",
+        "name": "الاسم باللغة الانجليزية",
+        "name_ar": "الاسم باللغة العربية",
+        "about": "عن المكان باللغة الانجليزية",
+        "about_ar": "عن المكان باللغة العربية",
+        "min_price": "اقل سعر",
+        "max_price": "اعلى سعر",
+        "open_at": "يفتح في",
+        "close_at": "يغلق في",
+        "valuation": "التقييم",
+        "logo": "اللوجو",
+        "featured_image": "الصورة الرئيسية",
+        "gallery": "صور المعرض",
+        "horizontal_video": "الفيديو الأفقي",
+        "vertical_video": "الفيديو الرأسي",
+        "menu_images": "صور القائمة",
+        "menu_url": "رابط القائمة"
+    },
+    "currencies": {
+        "sar": "ريال"
+    },
+    "time": {
+        "am": "ص",
+        "pm": "م"
+    },
+    "tabs": {
+        "accepted": "مقبول",
+        "pending": "قيد الانتظار",
+        "rejected": "مرفوضة"
+    },
+    "shapes": {
+        "vertical": "رأسي",
+        "horizontal": "افقي",
+        "square": "مربع"
+    }
+}

@@ -1,0 +1,46 @@
+.hidden {
+    display: none;
+}
+
+.button {
+    padding: .5rem .8rem;
+    border-radius: .75rem;
+    border: solid 1px #dadbdf;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: transparent;
+    margin-bottom: 1.5rem;
+
+    .placeholder {
+        color: #484848;
+        font-size: .8rem;
+        opacity: .33;
+        font-weight: 400;
+        text-transform: capitalize;
+    }
+
+    .plus {
+        font-size: 1.5rem;
+        color: $main-color;
+    }
+
+    .photoShape {
+        padding: .1rem .75rem;
+        border-radius: .5rem;
+        border: solid 1px $main-color;
+        background-color: lighten($main-color, 50);
+        color: $main-color;
+        font-size: .75rem;
+        text-transform: capitalize;
+    }
+
+    .fileName {
+        &:not(:last-child) {
+            &::after {
+                content: ' - ',
+            }
+        }
+    }
+}

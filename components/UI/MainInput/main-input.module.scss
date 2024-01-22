@@ -1,0 +1,27 @@
+.field {
+    font-size: .8rem;
+    color: $main-color;
+    font-weight: 500;
+    border: none;
+    width: 100%;
+    margin-bottom: 1.5rem;
+
+    &.underline {
+        border-bottom: 1px solid #dadbdf;
+        padding: .8rem 0;
+    }
+
+    &.box {
+        border: 1px solid #dadbdf;
+        border-radius: .75rem;
+        padding: .8rem;
+    }
+
+    &::placeholder {
+        color: #484848;
+        font-weight: 400;
+        font-size: .8rem;
+        opacity: .33;
+        text-transform: capitalize;
+    }
+}

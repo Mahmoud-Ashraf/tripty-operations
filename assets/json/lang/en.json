@@ -1,0 +1,90 @@
+{
+    "header": {
+        "hello": "Hello"
+    },
+    "subheadings": {
+        "generalInfo": "General info",
+        "contactAndLocation": "Contact and location",
+        "media": "Media",
+        "menu": "Menu",
+        "categories": "Categories",
+        "time": "Time",
+        "prices": "Prices",
+        "valuation": "Valuation"
+    },
+    "buttons": {
+        "login": "Login",
+        "addPlace": "Add place"
+    },
+    "common": {
+        "yes": "Yes",
+        "no": "No",
+        "cancel": "Cancel",
+        "next": "Next",
+        "km": "KM",
+        "m": "m",
+        "recomended": "Recomended",
+        "male": "Male",
+        "female": "Female",
+        "day": "Day",
+        "all": "All",
+        "open": "open",
+        "openAt": "open at"
+    },
+    "errors": {
+        "wrongCredentials": "Email or Password is incorrect",
+        "The email must be a valid email address": "The Email must be valid email address",
+        "The email field is required": "Email is Required",
+        "The password field is required": "Password is Required",
+        "The password must be at least 6 characters": "Password must be at least 6 characters"
+    },
+    "auth": {
+        "login": "Login"
+    },
+    "placeholder": {
+        "placeName": "Place name",
+        "mobile": "Mobile",
+        "email": "Email",
+        "password": "Password",
+        "city": "Place city",
+        "categories": "select category",
+        "subCategories": "select sub categories",
+        "tags": "select tags",
+        "tel": "Place phone",
+        "long": "Place Longitude",
+        "lat": "Place latitude",
+        "name": "Name in english",
+        "name_ar": "Name in arabic",
+        "about": "About in english",
+        "about_ar": "About in arabic",
+        "min_price": "minimum price",
+        "max_price": "maximum price",
+        "open_at": "open at",
+        "close_at": "close at",
+        "valuation": "Valuation",
+        "logo": "logo",
+        "featured_image": "Cover",
+        "gallery": "Gallery images",
+        "horizontal_video": "horizontal video",
+        "vertical_video": "vertical video",
+        "menu_images": "menu images",
+        "menu_url": "Menu link"
+    },
+    "currencies": {
+        "sar": "SAR"
+    },
+    "time": {
+        "am": "AM",
+        "pm": "PM"
+    },
+    "tabs": {
+        "accepted": "accepted",
+        "pending": "pending",
+        "rejected": "rejected"
+    },
+    "shapes": {
+        "vertical": "vertical",
+        "horizontal": "horizontal",
+        "square": "square"
+    }
+}

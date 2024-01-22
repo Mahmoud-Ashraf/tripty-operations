@@ -1,0 +1,44 @@
+.container {
+    background-color: $main-color;
+    padding: 1.5rem;
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9;
+
+    .icons {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .welcome {
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        h6 {
+            font-size: .8rem;
+        }
+    }
+
+    .lang {
+        border: none;
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+        text-transform: uppercase;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: $white;
+
+        option {
+            color: $main-color;
+        }
+    }
+}

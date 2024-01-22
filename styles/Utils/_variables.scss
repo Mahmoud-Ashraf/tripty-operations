@@ -1,0 +1,43 @@
+$white: #FFF;
+$black: #000;
+$stc: "STC";
+$baloo: "Baloo";
+$yellow: #fa8b24;
+$red: #dc3545;
+
+// Grays
+$gray-100: #f7f7f7;
+$gray-200: #f1f1f1;
+$gray-300: #b2b2b2;
+$gray-400: #a7a7a7;
+$gray-500: #8b8e98;
+$gray-600: #6e6e6e;
+$gray-700: #484848;
+$gray-800: #313737;
+$gray-900: #1e1e1e;
+
+$main-color : #6c3d8e;
+$main-font-family: $baloo;
+$main-bg: $white;
+$text-color: $main-color;
+
+$main-box-bg: $white;
+$main-border-color: $main-color;
+$rate-star-color: $yellow;
+
+$card-bg: $gray-100;
+$tabs-border-color: $gray-400;
+$tabs-color: $gray-300;
+$tabs-active-border-color: $main-color;
+$tabs-active-color: $main-color;
+
+$place-specs-color: $gray-700;
+$place-specs-icon-color: $gray-500;
+$place-heading-color: $gray-800;
+
+$theme-colors: (
+    "main": $main-color,
+    "error": $red,
+    "white": $white
+);
+$form-check-input-checked-bg-color: $main-color;

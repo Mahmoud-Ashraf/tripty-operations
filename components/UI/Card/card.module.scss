@@ -1,0 +1,36 @@
+.container {
+    padding: 1rem;
+    border-radius: .6rem;
+    background-color: $card-bg;
+    border-inline-end: .75rem solid $main-color;
+
+    h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+
+    .details {
+        display: flex;
+        justify-content: space-between;
+
+        span {
+            font-size: .9rem;
+        }
+    }
+
+    &:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+
+    &.pending {
+        border-color: #ec925f;
+    }
+
+    &.rejected {
+        border-color: #ec5f5f;
+    }
+
+    &.accepted {
+        border-color: #10ba3e;
+    }
+}

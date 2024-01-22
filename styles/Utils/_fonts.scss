@@ -1,0 +1,46 @@
+@font-face {
+    font-family: "STC";
+    src: url("../../public/assets/fonts/STC-Regular.ttf") format("truetype");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "STC";
+    src: url("../../public/assets/fonts/STC-Bold.ttf") format("truetype");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "Baloo";
+    src: url("../../public/assets/fonts/BalooBhaijaan2-Medium.ttf") format("truetype");
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "Baloo";
+    src: url("../../public/assets/fonts/BalooBhaijaan2-Regular.ttf") format("truetype");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Baloo";
+    src: url("../../public/assets/fonts/BalooBhaijaan2-SemiBold.ttf") format("truetype");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "Baloo";
+    src: url("../../public/assets/fonts/BalooBhaijaan2-Bold.ttf") format("truetype");
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "Baloo";
+    src: url("../../public/assets/fonts/BalooBhaijaan2-ExtraBold.ttf") format("truetype");
+    font-weight: 700;
+}
+
+body {
+    font-family: $main-font-family;
+    font-weight: 400;
+}

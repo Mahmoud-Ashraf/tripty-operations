@@ -1,0 +1,10 @@
+.data {
+    font-size: .8rem;
+    font-weight: 400;
+    padding-bottom: 1rem;
+    text-transform: capitalize;
+
+    &:not(:first-child) {
+        padding-top: 1.5rem;
+    }
+}

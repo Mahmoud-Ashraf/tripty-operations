@@ -1,0 +1,39 @@
+// @import '@/node_modules/@fortawesome/fontawesome-free/css/all.min.css';
+@import '@/styles/Utils/utils';
+@import '@/node_modules/bootstrap/scss/bootstrap';
+@import '@/styles/helpers/helpers';
+
+.react-select {
+    &-container {
+        .react-select {
+            &__control {
+                border-color: #dadbdf;
+                border-radius: .75rem;
+                margin-bottom: 1.5rem;
+            }
+
+            &__value-container {
+                padding: .7rem;
+
+            }
+
+            &__placeholder {
+                color: #484848;
+                font-weight: 400;
+                font-size: .8rem;
+                opacity: .33;
+                text-transform: capitalize;
+            }
+
+            &__input-container {
+                margin: 0;
+            }
+
+            &__single-value {
+                font-size: .8rem;
+                color: $main-color;
+                font-weight: 500;
+            }
+        }
+    }
+}

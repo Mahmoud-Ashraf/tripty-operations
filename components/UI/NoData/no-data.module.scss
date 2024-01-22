@@ -1,0 +1,13 @@
+.noData {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    font-size: 2rem;
+    gap: 2rem;
+    flex-direction: column;
+    color: var(--bs-red);
+    background-color: #fff;
+    border-radius: 1rem;
+    padding: 1rem 0;
+}
