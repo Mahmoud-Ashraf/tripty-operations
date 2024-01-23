@@ -41,7 +41,7 @@ const Header = () => {
                 <h6>Mahmoud Taha</h6>
             </div>
             <div className={classes.actions}>
-                <Link href={'/new-place'} className='btn btn-white w-100 btn-lg text-main'><Translate id="buttons.addPlace" /></Link>
+                <Link href={'/newplace'} className='btn btn-white w-100 btn-lg text-main'><Translate id="buttons.addPlace" /></Link>
             </div>
 
         </header>
