@@ -50,9 +50,7 @@ const AddPlace = () => {
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        console.log(name, value);
         // if (typeof (placeData[name as keyof typeof placeData]) !== 'string') {
-        //     console.log('type not string')
         // }
         // if (placeData[name])
         // if (!selectedValues.includes(selectedValue)) {
@@ -68,11 +66,9 @@ const AddPlace = () => {
     const addPlace = () => {
         storePlace();
         // const form = formRef.current;
-        // console.log(form?.elements);
         // if (form) {
         //     const formData = new FormData(form);
         //     const form1Values = Object.fromEntries(formData.entries());
-        //     console.log(form1Values);
         // }
     }
 
@@ -94,7 +90,6 @@ const AddPlace = () => {
 
     const convertToFormData = (data: any) => {
         const formData = new FormData();
-        console.log(data);
 
         // Iterate over the object properties
         for (const key in data) {
@@ -124,13 +119,9 @@ const AddPlace = () => {
             }
             // }
         }
-        console.log(formData);
         return formData;
     };
 
-    useEffect(() => {
-        console.log(placeData);
-    }, [placeData])
     return (
         <div className={classes.container}>
             <Head>

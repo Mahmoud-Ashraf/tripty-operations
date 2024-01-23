@@ -10,7 +10,6 @@ const Header = () => {
     const [selectedLang, setSlectedLang] = useState(router.locale);
 
     const changeLanguage = async (lang: string) => {
-        console.log(lang);
         try {
             const replace = await router.replace(router.asPath, router.asPath, { locale: lang });
             if (replace) {

@@ -30,7 +30,6 @@ export default async function POST(
         for (const key in files) {
             bodyFormData.append(key, files[key]);
         }
-        console.log(typeof (bodyFormData));
         const response = await fetch(baseUrl + `admin/places?change_language=${locale}`,
             {
                 method: 'POST',
@@ -44,7 +43,6 @@ export default async function POST(
             throw new Error('add place failed');
         }
         const data = await response.json();
-        console.log(data);
         if (data.error) {
             throw new Error(data.message);
         }

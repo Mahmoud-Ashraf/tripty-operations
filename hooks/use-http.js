@@ -33,10 +33,8 @@ const useHTTP = () => {
         setIsLoading(true);
         setError(null);
         let url = baseUrl + requestConfig.url;
-        console.log(url);
         // let contentTypeHeader = requestConfig.method === 'POST' && requestConfig.headers ? requestConfig.headers : {};
         let tokenHeader = token ? { 'Authorization': `Bearer ${token}` } : {};
-        console.log('token useHttp(): ', tokenHeader);
         // if (requestConfig.method === 'GET' || url.includes('/api/trip/create')) {
         const newUrl = new URL(url);
         if (baseUrl) {
