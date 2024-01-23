@@ -14,11 +14,11 @@ const CategoryForm = ({ data, handleChange }: FormProps) => {
     const getCategories = () => {
         sendRequest(
             {
-                url: 'front/categories',
+                url: '/api/categories',
                 method: 'GET'
             },
             (data: any) => {
-                setCategories(data.data);
+                setCategories(data);
             },
             (err: any) => console.error(err)
         )
@@ -27,11 +27,11 @@ const CategoryForm = ({ data, handleChange }: FormProps) => {
     const getTags = () => {
         sendRequest(
             {
-                url: 'front/tags',
+                url: '/api/tags',
                 method: 'GET'
             },
             (data: any) => {
-                setTags(data.data);
+                setTags(data);
             },
             (err: any) => console.error(err)
         )

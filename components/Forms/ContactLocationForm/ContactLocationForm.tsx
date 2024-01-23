@@ -11,10 +11,10 @@ const ContactLocationForm = ({ data, handleChange }: FormProps) => {
     const getCities = () => {
         sendRequest(
             {
-                url: 'front/cities',
+                url: '/api/cities',
                 method: 'GET'
             },
-            (data: any) => setCities(data.data),
+            (data: any) => setCities(data),
             (err: any) => console.error(err)
         )
     }

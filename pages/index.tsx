@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 import classes from '@/styles/Home.module.scss';
 import Translate from '@/components/helpers/Translate/Translate';
 import NoData from '@/components/UI/NoData/NoData';
+import Loader from '@/components/UI/Loader/Loader';
 
 export default function Home() {
   const { isLoading, error, sendRequest } = useHTTP();
@@ -15,15 +16,16 @@ export default function Home() {
   const [selectedTab, setSelectedTab] = useState('');
   const [tabs, setTabs] = useState<any>([]);
   const [tabPlaces, setTabPlaces] = useState<any>([]);
+  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
   const getPlaces = () => {
     sendRequest(
       {
-        url: 'admin/places',
+        url: `/api/places`,
         method: 'GET'
       },
       (data: any) => {
-        const placesKeys = Object.keys(data.data);
-        setPlaces(data.data);
+        const placesKeys = Object.keys(data);
+        setPlaces(data);
         setTabs(placesKeys);
         setSelectedTab(placesKeys[0]);
       },
@@ -46,6 +48,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      {isLoading && <Loader full />}
       <div className="row">
         <div className="col-12">
           <div className={classes.tabs}>
@@ -64,7 +67,7 @@ export default function Home() {
       <div className='row'>
         <div className="col-12">
           {
-            tabPlaces.length > 0 ?
+            tabPlaces?.length > 0 ?
               tabPlaces?.map((place: any) => {
                 return (
                   <Card key={place.id} place={place} />

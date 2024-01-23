@@ -20,19 +20,30 @@ const useHTTP = () => {
     }
 
     const sendRequest = useCallback(async (requestConfig, applyData, applyError) => {
-        const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+        // const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+        let baseUrl;
+        if (requestConfig.url.includes('http')) {
+            baseUrl = ''
+        } else {
+            baseUrl = window.location.origin;
+        }
         let token = '';
         const session = await getSession();
         token = session?.token;
         setIsLoading(true);
         setError(null);
         let url = baseUrl + requestConfig.url;
+        console.log(url);
         // let contentTypeHeader = requestConfig.method === 'POST' && requestConfig.headers ? requestConfig.headers : {};
         let tokenHeader = token ? { 'Authorization': `Bearer ${token}` } : {};
         console.log('token useHttp(): ', tokenHeader);
         // if (requestConfig.method === 'GET' || url.includes('/api/trip/create')) {
         const newUrl = new URL(url);
-        newUrl.searchParams.set(`change_language`, `${router.locale || 'ar'}`);
+        if (baseUrl) {
+            newUrl.searchParams.set(`locale`, `${router.locale || 'ar'}`);
+        } else {
+            newUrl.searchParams.set(`change_language`, `${router.locale || 'ar'}`);
+        }
         url = newUrl.toString();
         // }
         try {

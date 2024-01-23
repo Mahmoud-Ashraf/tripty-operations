@@ -38,7 +38,7 @@ const Login = () => {
         } else {
             sendRequest(
                 {
-                    url: 'admin/login',
+                    url: '/api/auth/login',
                     method: 'POST',
                     body: loginData,
                     headers: {

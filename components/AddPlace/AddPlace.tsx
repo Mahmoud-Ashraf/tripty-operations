@@ -13,10 +13,12 @@ import ValuationForm from '../Forms/ValuationForm/ValuationForm';
 import MediaForm from '../Forms/MediaForm/MediaForm';
 import useHTTP from '@/hooks/use-http';
 import MenuForm from '../Forms/MenuForm/MenuForm';
+import Loader from '../UI/Loader/Loader';
 
 const AddPlace = () => {
     const { isLoading, error, sendRequest } = useHTTP();
     const formRef = useRef<HTMLFormElement>(null);
+    const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
     // const contactFormRef = useRef<HTMLFormElement>(null);
     const [placeData, setPlaceData] = useState({
         name: '',
@@ -78,7 +80,7 @@ const AddPlace = () => {
         const body = convertToFormData(placeData)
         sendRequest(
             {
-                url: 'admin/places',
+                url: `${baseUrl}admin/places`,
                 method: 'POST',
                 body,
                 // headers: {
@@ -134,6 +136,7 @@ const AddPlace = () => {
             <Head>
                 <title>Tripty - Operations - Add New Place</title>
             </Head>
+            {isLoading && <Loader full />}
             <form ref={formRef}>
                 <SubHeading text="subheadings.generalInfo" />
                 <GeneralInfoForm data={placeData} handleChange={handleInputChange} />
@@ -162,6 +165,7 @@ const AddPlace = () => {
                 <p className='text-error'>{error}</p>
                 <button onClick={addPlace} className="btn btn-main btn-lg w-100"><Translate id="buttons.addPlace" /></button>
             </form>
+
         </div>
     )
 }
