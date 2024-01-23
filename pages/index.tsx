@@ -64,7 +64,7 @@ export default function Home() {
       <div className='row'>
         <div className="col-12">
           {
-            tabPlaces.length > 0 ?
+            tabPlaces?.length > 0 ?
               tabPlaces?.map((place: any) => {
                 return (
                   <Card key={place.id} place={place} />
