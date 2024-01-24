@@ -68,7 +68,8 @@
         "horizontal_video": "horizontal video",
         "vertical_video": "vertical video",
         "menu_images": "menu images",
-        "menu_url": "Menu link"
+        "menu_url": "Menu link",
+        "location_url": "google maps urls"
     },
     "currencies": {
         "sar": "SAR"

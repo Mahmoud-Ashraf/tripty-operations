@@ -1,7 +1,6 @@
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import SubHeading from '../UI/SubHeading/SubHeading';
 import classes from './add-place.module.scss';
-// import MainInput from '../UI/MainInput/MainInput';
 import Translate from '../helpers/Translate/Translate';
 import Head from 'next/head';
 import GeneralInfoForm from '../Forms/GeneralInfoForm/GeneralInfoForm';
@@ -15,11 +14,10 @@ import useHTTP from '@/hooks/use-http';
 import MenuForm from '../Forms/MenuForm/MenuForm';
 import Loader from '../UI/Loader/Loader';
 
-const AddPlace = () => {
+const AddPlace = ({ place }: any) => {
     const { isLoading, error, sendRequest } = useHTTP();
     const formRef = useRef<HTMLFormElement>(null);
     const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-    // const contactFormRef = useRef<HTMLFormElement>(null);
     const [placeData, setPlaceData] = useState({
         name: '',
         name_ar: '',
@@ -28,6 +26,7 @@ const AddPlace = () => {
         tel: '',
         long: '',
         lat: '',
+        location_url: '',
         city_id: '',
         categories: [],
         subCategories: [],
@@ -45,17 +44,9 @@ const AddPlace = () => {
         menu_images: [],
         menu_url: ''
     });
-    // const [infoFormData, setInfoFormData] = useState({ ['english-name']: '', ['arabic-name']: '' });
-    // const [contactFormData, setContactFormData] = useState({ ['english-name']: '', ['arabic-name']: '' });
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        // if (typeof (placeData[name as keyof typeof placeData]) !== 'string') {
-        // }
-        // if (placeData[name])
-        // if (!selectedValues.includes(selectedValue)) {
-        //     setSelectedValues([...selectedValues, selectedValue]);
-        //   }
         setPlaceData({ ...placeData, [name]: value });
     }
     const handleFileInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -65,11 +56,6 @@ const AddPlace = () => {
 
     const addPlace = () => {
         storePlace();
-        // const form = formRef.current;
-        // if (form) {
-        //     const formData = new FormData(form);
-        //     const form1Values = Object.fromEntries(formData.entries());
-        // }
     }
 
     const storePlace = () => {
@@ -78,10 +64,7 @@ const AddPlace = () => {
             {
                 url: `${baseUrl}admin/places`,
                 method: 'POST',
-                body,
-                // headers: {
-                //     'Content-Type': 'multipart/form-data; boundary=<calculated when request is sent>',
-                // },
+                body
             },
             (data: any) => console.log(data),
             (err: any) => console.error(err)
@@ -93,7 +76,6 @@ const AddPlace = () => {
 
         // Iterate over the object properties
         for (const key in data) {
-            // if (data.hasOwnProperty(key)) {
             // Check if the value is a File object (from file input)
             if (data[key] instanceof FileList) {
                 // Append each file to the FormData
@@ -117,10 +99,14 @@ const AddPlace = () => {
                     formData.append(key, data[key]);
                 }
             }
-            // }
         }
         return formData;
     };
+
+    useEffect(() => {
+        if (place)
+            setPlaceData(place)
+    }, [place])
 
     return (
         <div className={classes.container}>
