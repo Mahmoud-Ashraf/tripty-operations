@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import classes from './header.module.scss';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -8,6 +8,7 @@ import Link from 'next/link';
 const Header = () => {
     const router = useRouter();
     const [selectedLang, setSlectedLang] = useState(router.locale);
+    const [userData, setUserData] = useState<any>();
 
     const changeLanguage = async (lang: string) => {
         try {
@@ -20,6 +21,25 @@ const Header = () => {
             console.log(err)
         }
     };
+
+    const getUserData = () => {
+        getSession();
+    }
+
+    const getSession = () => {
+        const sessionData = sessionStorage.getItem('userData');
+        if (sessionData) {
+            const parsedSessionData = JSON.parse(sessionData);
+            return parsedSessionData;
+        } else {
+            return null;
+        }
+    }
+
+    useEffect(() => {
+        setUserData(getSession());
+    }, [])
+
 
     return (
         <header className={classes.container}>
@@ -37,7 +57,7 @@ const Header = () => {
             </div>
             <div className={classes.welcome}>
                 <h3><Translate id="header.hello" /></h3>
-                <h6>Mahmoud Taha</h6>
+                <h6>{userData?.user?.name}</h6>
             </div>
             <div className={classes.actions}>
                 <Link href={'/newplace'} className='btn btn-white w-100 btn-lg text-main'><Translate id="buttons.addPlace" /></Link>
