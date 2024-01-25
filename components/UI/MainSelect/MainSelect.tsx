@@ -9,7 +9,7 @@ const MainSelect = ({
     multi = false,
     name,
     onChange,
-    required = true,
+    required = false,
     value,
     placeholder,
 }: MainSelectProps) => {

@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
 import SubHeading from '../UI/SubHeading/SubHeading';
 import classes from './add-place.module.scss';
 import Translate from '../helpers/Translate/Translate';
@@ -18,7 +18,7 @@ const AddPlace = ({ place }: any) => {
     const { isLoading, error, sendRequest } = useHTTP();
     const formRef = useRef<HTMLFormElement>(null);
     const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-    const [placeData, setPlaceData] = useState({
+    const initialPlace = {
         name: '',
         name_ar: '',
         about_ar: '',
@@ -43,7 +43,8 @@ const AddPlace = ({ place }: any) => {
         vertical_video: [],
         menu_images: [],
         menu_url: ''
-    });
+    }
+    const [placeData, setPlaceData] = useState(initialPlace);
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         console.log(e);
@@ -55,19 +56,20 @@ const AddPlace = ({ place }: any) => {
     //     setPlaceData({ ...placeData, [name]: files });
     // }
 
-    const addPlace = () => {
-        storePlace();
+    const addPlace = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        await storePlace();
     }
 
-    const storePlace = () => {
+    const storePlace = async () => {
         const body = convertToFormData(placeData)
-        sendRequest(
+        await sendRequest(
             {
                 url: `${baseUrl}admin/places`,
                 method: 'POST',
                 body
             },
-            (data: any) => console.log(data),
+            (data: any) => setPlaceData(initialPlace),
             (err: any) => console.error(err)
         )
     }
@@ -77,27 +79,49 @@ const AddPlace = ({ place }: any) => {
 
         // Iterate over the object properties
         for (const key in data) {
-            // Check if the value is a File object (from file input)
-            if (data[key] instanceof FileList) {
-                // Append each file to the FormData
-                if (data[key].length > 1) {
-                    for (let i = 0; i < data[key].length; i++) {
-                        formData.append(`${key}[${i}]`, data[key][i]);
+            // // Check if the value is a File object (from file input)
+            // if (data[key] instanceof FileList) {
+            //     // Append each file to the FormData
+            //     if (data[key].length > 1) {
+            //         for (let i = 0; i < data[key].length; i++) {
+            //             formData.append(`${key}[${i}]`, data[key][i]);
+            //         }
+            //     } else {
+            //         formData.append(key, data[key][0]);
+            //     }
+            // } else {
+            //     if (data[key] instanceof Array) {
+            //         for (let i = 0; i < data[key].length; i++) {
+            //             formData.append(`${key}[${i}]`, data[key][i]);
+            //         }
+            //     } else if (key === 'categories') {
+            //         formData.append(`${key}[0]`, data[key]);
+            //     }
+            //     else {
+            //         // Append regular key-value pairs to the FormData
+            //         formData.append(key, data[key]);
+            //     }
+            // }
+
+            if (data[key] instanceof Array) {
+                if (data[key].some((item: any) => item instanceof File)) {
+                    if (key === 'gallery' || key === 'menu_images') {
+                        for (let i = 0; i < data[key].length; i++) {
+                            formData.append(`${key}[${i}]`, data[key][i]);
+                        }
+                    } else {
+                        formData.append(`${key}`, data[key][0]);
                     }
                 } else {
-                    formData.append(key, data[key][0]);
-                }
-            } else {
-                if (data[key] instanceof Array) {
                     for (let i = 0; i < data[key].length; i++) {
                         formData.append(`${key}[${i}]`, data[key][i]);
                     }
-                } else if (key === 'categories') {
-                    formData.append(`${key}[0]`, data[key]);
                 }
-                else {
-                    // Append regular key-value pairs to the FormData
-                    formData.append(key, data[key]);
+            } else {
+                if (key === 'categories') {
+                    formData.append(`${key}[0]`, data[key]);
+                } else {
+                    formData.append(`${key}`, data[key]);
                 }
             }
         }
@@ -115,7 +139,7 @@ const AddPlace = ({ place }: any) => {
                 <title>Tripty - Operations - Add New Place</title>
             </Head>
             {isLoading && <Loader full />}
-            <form ref={formRef}>
+            <form ref={formRef} onSubmit={addPlace}>
                 <SubHeading text="subheadings.generalInfo" />
                 <GeneralInfoForm data={placeData} handleChange={handleInputChange} />
 
@@ -141,7 +165,7 @@ const AddPlace = ({ place }: any) => {
                 <ValuationForm data={placeData} handleChange={handleInputChange} />
 
                 <p className='text-error'>{error}</p>
-                <button onClick={addPlace} className="btn btn-main btn-lg w-100">{place ? <Translate id="buttons.updatePlace" /> : <Translate id="buttons.addPlace" />}</button>
+                <button className="btn btn-main btn-lg w-100">{place ? <Translate id="buttons.updatePlace" /> : <Translate id="buttons.addPlace" />}</button>
             </form>
 
         </div>
