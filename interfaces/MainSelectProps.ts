@@ -7,7 +7,7 @@ export interface MainSelectProps {
     multi?: boolean,
     name: string,
     onChange: ({ target }: any) => void,
-    required: boolean,
+    required?: boolean,
     value?: any,
     placeholder: string
 

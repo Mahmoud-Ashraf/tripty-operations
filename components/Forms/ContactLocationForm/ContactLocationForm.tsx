@@ -25,11 +25,9 @@ const ContactLocationForm = ({ data, handleChange }: FormProps) => {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
                     // Retrieve the latitude and longitude from the position object
-                    console.log('coords: ', position.coords);
                     const { latitude, longitude } = position.coords;
                     data.lat = latitude;
                     data.long = longitude;
-                    // setCuurentLocation({ lat: latitude, long: longitude });
                 },
                 (error) => {
                     // Handle any errors that occur while retrieving the location
@@ -49,10 +47,10 @@ const ContactLocationForm = ({ data, handleChange }: FormProps) => {
     return (
         <>
             <MainInput type="text" name="tel" value={data.tel} onChange={handleChange} placeholder={translate('placeholder.tel')} required />
-            <MainInput type="text" name="long" value={data.long} onChange={handleChange} placeholder={translate('placeholder.long')} required />
-            <MainInput type="text" name="lat" value={data.lat} onChange={handleChange} placeholder={translate('placeholder.lat')} required />
-            <MainInput type="text" name="location_url" value={data.location_url} onChange={handleChange} placeholder={translate('placeholder.location_url')} required />
-            <MainSelect value={data?.city} options={cities.map((city: any) => { return { value: city.id, label: city.name } })} name="city_id" onChange={handleChange} placeholder={translate('placeholder.city')} required />
+            <MainInput type="text" name="long" value={data.long} onChange={handleChange} placeholder={translate('placeholder.long')} />
+            <MainInput type="text" name="lat" value={data.lat} onChange={handleChange} placeholder={translate('placeholder.lat')} />
+            <MainInput type="text" name="location_url" value={data.location_url} onChange={handleChange} placeholder={translate('placeholder.location_url')} />
+            <MainSelect value={data.city_id || data.city || null} options={cities.map((city: any) => { return { value: city.id, label: city.name } })} name="city_id" onChange={handleChange} placeholder={translate('placeholder.city')} required />
         </>
     )
 }

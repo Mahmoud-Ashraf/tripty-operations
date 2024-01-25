@@ -14,7 +14,8 @@
     },
     "buttons": {
         "login": "تسجيل دخول",
-        "addPlace": "اضف مكان جديد"
+        "addPlace": "اضف مكان جديد",
+        "updatePlace": "تحديث المكان"
     },
     "common": {
         "yes": "نعم",
