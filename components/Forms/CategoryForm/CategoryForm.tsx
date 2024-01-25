@@ -44,9 +44,9 @@ const CategoryForm = ({ data, handleChange }: FormProps) => {
     }, [])
     return (
         <>
-            <MainSelect options={categories.map((category: any) => { return { value: category.id, label: category.name } })} name="categories" value={data.categories[0]} onChange={handleChange} placeholder={translate('placeholder.categories')} required />
-            <MainSelect options={subCategories} multi name="sub_categories" value={data.sub_categories} onChange={handleChange} placeholder={translate('placeholder.subCategories')} required />
-            <MainSelect options={tags.map((tag: any) => { return { value: tag.id, label: tag.name } })} multi name="tags" value={data.tags} onChange={handleChange} placeholder={translate('placeholder.tags')} required />
+            <MainSelect options={categories.map((category: any) => { return { value: category.id, label: category.name } })} name="categories" value={data.categories || data?.category || null} onChange={handleChange} placeholder={translate('placeholder.categories')} required />
+            <MainSelect options={subCategories} multi name="sub_categories" value={data?.sub_categories} onChange={handleChange} placeholder={translate('placeholder.subCategories')} required />
+            <MainSelect options={tags.map((tag: any) => { return { value: tag.id, label: tag.name } })} multi name="tags" value={data?.tags || []} onChange={handleChange} placeholder={translate('placeholder.tags')} required />
         </>
     )
 }

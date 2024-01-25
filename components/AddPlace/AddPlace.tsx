@@ -46,13 +46,14 @@ const AddPlace = ({ place }: any) => {
     });
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+        console.log(e);
         const { name, value } = e.target;
         setPlaceData({ ...placeData, [name]: value });
     }
-    const handleFileInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const { name, files } = e.target;
-        setPlaceData({ ...placeData, [name]: files });
-    }
+    // const handleFileInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    //     const { name, files } = e.target;
+    //     setPlaceData({ ...placeData, [name]: files });
+    // }
 
     const addPlace = () => {
         storePlace();
@@ -122,10 +123,10 @@ const AddPlace = ({ place }: any) => {
                 <ContactLocationForm data={placeData} handleChange={handleInputChange} />
 
                 <SubHeading text="subheadings.media" />
-                <MediaForm data={placeData} handleChange={handleFileInputChange} />
+                <MediaForm data={placeData} handleChange={handleInputChange} />
 
                 <SubHeading text="subheadings.menu" />
-                <MenuForm data={placeData} handleChange={handleInputChange} handleFileChange={handleFileInputChange} />
+                <MenuForm data={placeData} handleChange={handleInputChange} />
 
                 <SubHeading text="subheadings.categories" />
                 <CategoryForm data={placeData} handleChange={handleInputChange} />
@@ -140,7 +141,7 @@ const AddPlace = ({ place }: any) => {
                 <ValuationForm data={placeData} handleChange={handleInputChange} />
 
                 <p className='text-error'>{error}</p>
-                <button onClick={addPlace} className="btn btn-main btn-lg w-100"><Translate id="buttons.addPlace" /></button>
+                <button onClick={addPlace} className="btn btn-main btn-lg w-100">{place ? <Translate id="buttons.updatePlace" /> : <Translate id="buttons.addPlace" />}</button>
             </form>
 
         </div>

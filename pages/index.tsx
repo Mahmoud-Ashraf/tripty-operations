@@ -70,7 +70,7 @@ export default function Home() {
             tabPlaces?.length > 0 ?
               tabPlaces?.map((place: any) => {
                 return (
-                  <Card key={place.id} place={place} />
+                  <Card key={place.id} place={place} onClick={() => router.push(`/editplace/${place.id}`)} />
                 )
               })
               :

@@ -14,7 +14,8 @@
     },
     "buttons": {
         "login": "Login",
-        "addPlace": "Add place"
+        "addPlace": "Add place",
+        "updatePlace": "Update place"
     },
     "common": {
         "yes": "Yes",
