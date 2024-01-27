@@ -24,14 +24,14 @@
     }
 
     &.pending {
-        border-color: #ec925f;
+        border-color: $pending;
     }
 
     &.rejected {
-        border-color: #ec5f5f;
+        border-color: $rejected;
     }
 
     &.accepted {
-        border-color: #10ba3e;
+        border-color: $accepted;
     }
 }

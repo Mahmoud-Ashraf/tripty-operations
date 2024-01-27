@@ -5,7 +5,7 @@ import React from 'react';
 import Translate from '@/components/helpers/Translate/Translate';
 import Link from 'next/link';
 
-const Header = () => {
+const Header = ({ place }: any) => {
     const router = useRouter();
     const [selectedLang, setSlectedLang] = useState(router.locale);
     const [userData, setUserData] = useState<any>();
@@ -59,9 +59,22 @@ const Header = () => {
                 <h3><Translate id="header.hello" /></h3>
                 <h6>{userData?.user?.name}</h6>
             </div>
-            <div className={classes.actions}>
-                <Link href={'/newplace'} className='btn btn-white w-100 btn-lg text-main'><Translate id="buttons.addPlace" /></Link>
-            </div>
+            {
+                place ?
+                    <div className={classes.place}>
+                        <p className={classes.placeName}>{place.name}</p>
+                        <p className={`${classes.placeStatus} ${classes[place.status]}`}><Translate id={`tabs.${place.status}`} /></p>
+                    </div>
+                    :
+                    <div className={classes.actions}>
+                        {
+                            router.pathname.includes('newplace') ?
+                                <p><Translate id="buttons.addPlace" /></p>
+                                :
+                                <Link href={'/newplace'} className='btn btn-white w-100 btn-lg text-main'><Translate id="buttons.addPlace" /></Link>
+                        }
+                    </div>
+            }
 
         </header>
     )
