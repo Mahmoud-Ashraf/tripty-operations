@@ -13,16 +13,16 @@ export default function App({ Component, pageProps, router }: AppProps) {
   });
 
   return (
-    // <>
-    //   {
-    //     shouldNotUseLayout ?
-    <Component {...pageProps} />
-    //       :
-    //       <Layout>
-    //         <Component {...pageProps} />
-    //       </Layout>
-    //   }
-    // </>
+    <>
+      {
+        shouldNotUseLayout ?
+          <Component {...pageProps} />
+          :
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+      }
+    </>
   )
 
 }
