@@ -6,8 +6,8 @@ const TimeForm = ({ data, handleChange }: FormProps) => {
 
     return (
         <>
-            <MainInput type="text" name="open_at" value={data.open_at} onChange={handleChange} placeholder={translate('placeholder.open_at')} required />
-            <MainInput type="text" name="close_at" value={data.close_at} onChange={handleChange} placeholder={translate('placeholder.close_at')} required />
+            <MainInput type="time" name="open_at" step="1" value={data.open_at} onChange={handleChange} placeholder={translate('placeholder.open_at')} required />
+            <MainInput type="time" name="close_at" step="1" value={data.close_at} onChange={handleChange} placeholder={translate('placeholder.close_at')} required />
         </>
     )
 }

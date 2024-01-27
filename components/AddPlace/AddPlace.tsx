@@ -13,9 +13,11 @@ import MediaForm from '../Forms/MediaForm/MediaForm';
 import useHTTP from '@/hooks/use-http';
 import MenuForm from '../Forms/MenuForm/MenuForm';
 import Loader from '../UI/Loader/Loader';
+import { useRouter } from 'next/router';
 
 const AddPlace = ({ place }: any) => {
     const { isLoading, error, sendRequest } = useHTTP();
+    const router = useRouter();
     const formRef = useRef<HTMLFormElement>(null);
     const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
     const initialPlace = {
@@ -28,8 +30,8 @@ const AddPlace = ({ place }: any) => {
         lat: '',
         location_url: '',
         city_id: '',
-        categories: [],
-        subCategories: [],
+        main_category: [],
+        sub_cats: [],
         tags: [],
         open_at: '',
         close_at: '',
@@ -57,8 +59,12 @@ const AddPlace = ({ place }: any) => {
     // }
 
     const addPlace = async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        await storePlace();
+        e.preventDefault();
+        if (place) {
+            await updatePlace();
+        } else {
+            await storePlace();
+        }
     }
 
     const storePlace = async () => {
@@ -70,6 +76,19 @@ const AddPlace = ({ place }: any) => {
                 body
             },
             (data: any) => setPlaceData(initialPlace),
+            (err: any) => console.error(err)
+        )
+    }
+
+    const updatePlace = async () => {
+        const body = convertToFormData(placeData)
+        await sendRequest(
+            {
+                url: `${baseUrl}admin/places/${place?.id}`,
+                method: 'POST',
+                body
+            },
+            (data: any) => router.push('/'),
             (err: any) => console.error(err)
         )
     }
