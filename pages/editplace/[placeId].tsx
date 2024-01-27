@@ -4,6 +4,7 @@ import AddPlace from '@/components/AddPlace/AddPlace';
 import useHTTP from '@/hooks/use-http';
 import { useEffect, useState } from 'react';
 import Header from '@/components/layout/Header/Header';
+import Loader from '@/components/UI/Loader/Loader';
 
 const EditPlace = () => {
     const router = useRouter();
@@ -34,6 +35,7 @@ const EditPlace = () => {
     return (
         <div>
             <Header place={place} />
+            {isLoading && <Loader full />}
             <div className="container">
                 {
                     place?.status === 'rejected' && place?.admin_comment &&
