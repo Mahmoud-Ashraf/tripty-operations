@@ -3,7 +3,9 @@ $black: #000;
 $stc: "STC";
 $baloo: "Baloo";
 $yellow: #fa8b24;
-$red: #dc3545;
+$red: #ec5f5f;
+$orange: #ec925f;
+$green: #10ba3e;
 
 // Grays
 $gray-100: #f7f7f7;
@@ -20,10 +22,13 @@ $main-color : #6c3d8e;
 $main-font-family: $baloo;
 $main-bg: $white;
 $text-color: $main-color;
+$pending: $orange;
+$rejected: $red;
+$accepted: $green;
 
 $main-box-bg: $white;
 $main-border-color: $main-color;
-$rate-star-color: $yellow;
+// $rate-star-color: $yellow;
 
 $card-bg: $gray-100;
 $tabs-border-color: $gray-400;

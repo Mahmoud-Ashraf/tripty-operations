@@ -122,25 +122,27 @@ const AddPlace = ({ place }: any) => {
             //     }
             // }
 
-            if (data[key] instanceof Array) {
-                if (data[key].some((item: any) => item instanceof File)) {
-                    if (key === 'gallery' || key === 'menu_images') {
+            if (data[key]) {
+                if (data[key] instanceof Array) {
+                    if (data[key].some((item: any) => item instanceof File)) {
+                        if (key === 'gallery' || key === 'menu_images') {
+                            for (let i = 0; i < data[key].length; i++) {
+                                formData.append(`${key}[${i}]`, data[key][i]);
+                            }
+                        } else {
+                            formData.append(`${key}`, data[key][0]);
+                        }
+                    } else {
                         for (let i = 0; i < data[key].length; i++) {
                             formData.append(`${key}[${i}]`, data[key][i]);
                         }
+                    }
+                } else {
+                    if (key === 'categories') {
+                        formData.append(`${key}[0]`, data[key]);
                     } else {
-                        formData.append(`${key}`, data[key][0]);
+                        formData.append(`${key}`, data[key]);
                     }
-                } else {
-                    for (let i = 0; i < data[key].length; i++) {
-                        formData.append(`${key}[${i}]`, data[key][i]);
-                    }
-                }
-            } else {
-                if (key === 'categories') {
-                    formData.append(`${key}[0]`, data[key]);
-                } else {
-                    formData.append(`${key}`, data[key]);
                 }
             }
         }

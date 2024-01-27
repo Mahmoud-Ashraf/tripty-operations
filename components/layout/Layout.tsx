@@ -18,12 +18,10 @@ const Layout = ({ children }: any) => {
     return (
         !isLoading &&
         <div className={`${classes.container} mb-4`}>
-            <Header />
-            <div className={classes.content}>
-                <div className="container">
-                    {children}
-                </div>
-            </div>
+            {/* <Header /> */}
+            {/* <div className="container"> */}
+            {children}
+            {/* </div> */}
         </div>
     )
 }

@@ -41,4 +41,29 @@
             color: $main-color;
         }
     }
+
+    .actions {
+        p {
+            font-size: 1.5rem;
+        }
+    }
+}
+
+.placeName {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.placeStatus {
+    &.rejected {
+        color: $rejected;
+    }
+
+    &.accepted {
+        color: $accepted;
+    }
+
+    &.pending {
+        color: $pending;
+    }
 }

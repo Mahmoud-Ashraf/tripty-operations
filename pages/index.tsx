@@ -8,6 +8,7 @@ import classes from '@/styles/Home.module.scss';
 import Translate from '@/components/helpers/Translate/Translate';
 import NoData from '@/components/UI/NoData/NoData';
 import Loader from '@/components/UI/Loader/Loader';
+import Header from '@/components/layout/Header/Header';
 
 export default function Home() {
   const { isLoading, error, sendRequest } = useHTTP();
@@ -48,34 +49,38 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header />
       {isLoading && <Loader full />}
-      <div className="row">
-        <div className="col-12">
-          <div className={classes.tabs}>
-            {
-              tabs?.map((tab: any) => {
-                return (
-                  <div key={tab} className={`${classes.tab} ${selectedTab === tab ? classes.selected : ''}`} onClick={() => setSelectedTab(tab)}>
-                    <Translate id={`tabs.${tab}`} />
-                  </div>
-                )
-              })
-            }
+      <div className="container">
+
+        <div className="row">
+          <div className="col-12">
+            <div className={classes.tabs}>
+              {
+                tabs?.map((tab: any) => {
+                  return (
+                    <div key={tab} className={`${classes.tab} ${selectedTab === tab ? classes.selected : ''}`} onClick={() => setSelectedTab(tab)}>
+                      <Translate id={`tabs.${tab}`} />
+                    </div>
+                  )
+                })
+              }
+            </div>
           </div>
         </div>
-      </div>
-      <div className='row'>
-        <div className="col-12">
-          {
-            tabPlaces?.length > 0 ?
-              tabPlaces?.map((place: any) => {
-                return (
-                  <Card key={place.id} place={place} onClick={() => router.push(`/editplace/${place.id}`)} />
-                )
-              })
-              :
-              <NoData />
-          }
+        <div className='row'>
+          <div className="col-12">
+            {
+              tabPlaces?.length > 0 ?
+                tabPlaces?.map((place: any) => {
+                  return (
+                    <Card key={place.id} place={place} onClick={() => router.push(`/editplace/${place.id}`)} />
+                  )
+                })
+                :
+                <NoData />
+            }
+          </div>
         </div>
       </div>
     </>

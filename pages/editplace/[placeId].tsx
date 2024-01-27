@@ -1,14 +1,15 @@
 import { useRouter } from 'next/router';
-// import classes from './new-place.module.scss';
+import classes from './place.module.scss';
 import AddPlace from '@/components/AddPlace/AddPlace';
 import useHTTP from '@/hooks/use-http';
 import { useEffect, useState } from 'react';
+import Header from '@/components/layout/Header/Header';
 
 const EditPlace = () => {
     const router = useRouter();
     const { isLoading, error, sendRequest } = useHTTP();
     const { placeId } = router.query;
-    const [place, setPlace] = useState();
+    const [place, setPlace] = useState<any>();
 
 
     const getPlace = () => {
@@ -32,7 +33,16 @@ const EditPlace = () => {
     }, [placeId])
     return (
         <div>
-            <AddPlace place={place} />
+            <Header place={place} />
+            <div className="container">
+                {
+                    place?.status === 'rejected' && place?.admin_comment &&
+                    <div className={classes.rejected}>
+                        <p className='text-error'>{place?.admin_comment}</p>
+                    </div>
+                }
+                <AddPlace place={place} />
+            </div>
         </div>
     )
 }
