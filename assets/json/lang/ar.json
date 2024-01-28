@@ -70,7 +70,9 @@
         "vertical_video": "الفيديو الرأسي",
         "menu_images": "صور القائمة",
         "menu_url": "رابط القائمة",
-        "location_url": "رابط خرائط جوجل"
+        "location_url": "رابط خرائط جوجل",
+        "trendNow": "هبة",
+        "booking_link": "رابط الحجز"
     },
     "currencies": {
         "sar": "ريال"

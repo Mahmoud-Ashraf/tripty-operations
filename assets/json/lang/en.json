@@ -70,7 +70,9 @@
         "vertical_video": "vertical video",
         "menu_images": "menu images",
         "menu_url": "Menu link",
-        "location_url": "google maps urls"
+        "location_url": "google maps urls",
+        "trendNow": "trend now",
+        "booking_link": "booking link"
     },
     "currencies": {
         "sar": "SAR"

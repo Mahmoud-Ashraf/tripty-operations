@@ -20,13 +20,13 @@ const MainSelect = ({
     }
 
     const handleSelectedValues = () => {
-        console.log('handleSelectedValue: ', value);
+        console.log(`handleSelectedValue: ${name}`, value);
         if (value) {
             if (value instanceof Array) {
                 // if (typeof (value[0]) === 'number') {
                 //     return [...value.map(item => )]
                 // }
-                return [...value.map((item => { return { value: item.id || item, label: item.name || options.find(option => option.value === item)?.label } }))];
+                return [...value.map((item => { return { value: item.id || item, label: item.name || options?.find(option => option.value === item)?.label } }))];
             } else {
                 const transformedObject: any = {};
                 if (typeof (value) === 'number') {
@@ -54,7 +54,7 @@ const MainSelect = ({
     useEffect(() => {
         setFieldValue(handleSelectedValues());
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [value])
+    }, [value, options])
     return (
         <Select
             name={name}
