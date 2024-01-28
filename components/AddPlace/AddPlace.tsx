@@ -50,7 +50,6 @@ const AddPlace = ({ place }: any) => {
         trend_now: 0,
     }
     const [placeData, setPlaceData] = useState(initialPlace);
-
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         console.log(e);
         const { name, value } = e.target;
