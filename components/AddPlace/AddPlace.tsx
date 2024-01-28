@@ -68,7 +68,7 @@ const AddPlace = ({ place }: any) => {
     }
 
     const storePlace = async () => {
-        const body = convertToFormData(placeData)
+        const body = await convertToFormData(placeData)
         await sendRequest(
             {
                 url: `${baseUrl}admin/places`,
@@ -81,7 +81,7 @@ const AddPlace = ({ place }: any) => {
     }
 
     const updatePlace = async () => {
-        const body = convertToFormData(placeData)
+        const body = await convertToFormData(placeData)
         await sendRequest(
             {
                 url: `${baseUrl}admin/places/${place?.id}`,
@@ -93,38 +93,15 @@ const AddPlace = ({ place }: any) => {
         )
     }
 
-    const convertToFormData = (data: any) => {
+    const convertToFormData = async (data: any) => {
         const formData = new FormData();
-
+        console.log(data);
         // Iterate over the object properties
         for (const key in data) {
-            // // Check if the value is a File object (from file input)
-            // if (data[key] instanceof FileList) {
-            //     // Append each file to the FormData
-            //     if (data[key].length > 1) {
-            //         for (let i = 0; i < data[key].length; i++) {
-            //             formData.append(`${key}[${i}]`, data[key][i]);
-            //         }
-            //     } else {
-            //         formData.append(key, data[key][0]);
-            //     }
-            // } else {
-            //     if (data[key] instanceof Array) {
-            //         for (let i = 0; i < data[key].length; i++) {
-            //             formData.append(`${key}[${i}]`, data[key][i]);
-            //         }
-            //     } else if (key === 'categories') {
-            //         formData.append(`${key}[0]`, data[key]);
-            //     }
-            //     else {
-            //         // Append regular key-value pairs to the FormData
-            //         formData.append(key, data[key]);
-            //     }
-            // }
-
             if (data[key]) {
                 if (data[key] instanceof Array) {
                     if (data[key].some((item: any) => item instanceof File)) {
+                        console.log(`${key}: ${data[key]}`);
                         if (key === 'gallery' || key === 'menu_images') {
                             for (let i = 0; i < data[key].length; i++) {
                                 formData.append(`${key}[${i}]`, data[key][i]);
@@ -132,7 +109,8 @@ const AddPlace = ({ place }: any) => {
                         } else {
                             formData.append(`${key}`, data[key][0]);
                         }
-                    } else {
+                    } else if (!key.includes('image') && !key.includes('video') && !key.includes('logo') && !key.includes('gallery')) {
+                        console.log(`${key}: ${data[key]}`);
                         for (let i = 0; i < data[key].length; i++) {
                             formData.append(`${key}[${i}]`, data[key][i]);
                         }
