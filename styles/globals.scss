@@ -37,3 +37,11 @@
         }
     }
 }
+
+
+input[type="time"] {
+    appearance: none;
+    /* Remove default styles for Chrome/Safari */
+    -moz-appearance: textfield;
+    /* Remove default styles for Firefox */
+}

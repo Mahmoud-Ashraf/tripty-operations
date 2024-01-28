@@ -37,17 +37,19 @@ const AddPlace = ({ place }: any) => {
         close_at: '',
         min_price: '',
         max_price: '',
-        valuation: '',
+        // valuation: '',
         logo: [],
         featured_image: [],
         gallery: [],
         horizontal_video: [],
         vertical_video: [],
         menu_images: [],
-        menu_url: ''
+        menu_url: '',
+        booking_link: '',
+        overall_rating: '',
+        trend_now: 0,
     }
     const [placeData, setPlaceData] = useState(initialPlace);
-
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         console.log(e);
         const { name, value } = e.target;

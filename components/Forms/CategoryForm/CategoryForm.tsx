@@ -61,9 +61,9 @@ const CategoryForm = ({ data, handleChange }: FormProps) => {
     }, [data.main_category])
     return (
         <>
-            <MainSelect options={categories.map((category: any) => { return { value: category.id, label: category.name } })} name="main_category" value={data.main_category || data?.category || null} onChange={handleChange} placeholder={translate('placeholder.categories')} required />
-            <MainSelect options={subCategories.map((subCat: any) => { return { value: subCat.id, label: subCat.name } })} multi name="sub_cats" value={data?.sub_cats || []} onChange={handleChange} placeholder={translate('placeholder.subCategories')} />
-            <MainSelect options={tags.map((tag: any) => { return { value: tag.id, label: tag.name } })} multi name="tags" value={data?.tags || []} onChange={handleChange} placeholder={translate('placeholder.tags')} required />
+            <MainSelect options={categories?.map((category: any) => { return { value: category.id, label: category.name } })} name="main_category" value={data.main_category || data?.category || null} onChange={handleChange} placeholder={translate('placeholder.categories')} required />
+            <MainSelect options={subCategories?.map((subCat: any) => { return { value: subCat.id, label: subCat.name } })} multi name="sub_cats" value={data?.sub_cats || []} onChange={handleChange} placeholder={translate('placeholder.subCategories')} />
+            <MainSelect options={tags?.map((tag: any) => { return { value: tag.id, label: tag.name } })} multi name="tags" value={data?.tags || []} onChange={handleChange} placeholder={translate('placeholder.tags')} required />
         </>
     )
 }
