@@ -58,17 +58,17 @@ const useHTTP = () => {
             if (!response.ok) {
                 const data = await response.json();
                 console.log(data);
-                // if (data.error) {
-                //     throw new Error(data.error);
-                // } else {
-                throw new Error(data.error || 'Request Failed');
-                // }
+                if (data.error) {
+                    throw new Error(data.message || data.error);
+                } else {
+                    throw new Error('Request Failed');
+                }
             }
 
             const data = await response.json();
             if (data.error) {
                 console.log(data.error);
-                throw new Error(`${data.error}`);
+                throw new Error(data.message || data.error);
             }
             applyData(data);
         } catch (err) {

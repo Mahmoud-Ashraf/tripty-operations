@@ -28,6 +28,6 @@ export default async function handler(
         res.status(200).json(data);
     } catch (error: any) {
         console.error('API Error:', error);
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ error: true, message: error.message });
     }
 }
