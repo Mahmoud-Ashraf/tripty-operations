@@ -25,10 +25,10 @@ const FileInput = ({ placeholder, photoShape, onChange, name, multiple, value }:
         }
     }
 
-    useEffect(() => {
-        if (value)
-            console.log(`file input value: ${name}`, value);
-    }, [value])
+    // useEffect(() => {
+    //     if (value)
+    //         console.log(`file input value: ${name}`, value);
+    // }, [value])
     return (
         <div className={classes.container}>
             <input className={classes.hidden} ref={fileInputRef} multiple={multiple} type='file' onChange={handleUploadFiles} />
