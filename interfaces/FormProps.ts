@@ -1,4 +1,4 @@
 interface FormProps {
     data: any,
-    handleChange: (e: any) => void
+    handleChange: (e: any) => void,
 }

@@ -51,7 +51,6 @@ const AddPlace = ({ place }: any) => {
     }
     const [placeData, setPlaceData] = useState(initialPlace);
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-        console.log(e);
         const { name, value } = e.target;
         setPlaceData({ ...placeData, [name]: value });
     }
