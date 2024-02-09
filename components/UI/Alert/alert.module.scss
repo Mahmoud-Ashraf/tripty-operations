@@ -1,0 +1,60 @@
+.container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    z-index: 9999;
+    display: flex;
+
+    .content {
+        border: 1px solid $green;
+        border-radius: .5rem;
+        padding: .5rem 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+        width: 100%;
+
+
+        h3,
+        p {
+            line-height: 1;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            display: flex;
+            gap: .5rem;
+        }
+
+        p {
+            font-size: 1rem;
+        }
+
+        &.success {
+            border-color: $green;
+            background-color: lighten($green, 55);
+            color: $green;
+        }
+
+        &.info {
+            border-color: $orange;
+            background-color: lighten($orange, 55);
+            color: $orange;
+        }
+
+        &.warning {
+            border-color: $yellow;
+            background-color: lighten($yellow, 55);
+            color: $yellow;
+        }
+
+        &.error {
+            border-color: $red;
+            background-color: lighten($red, 55);
+            color: $red;
+        }
+    }
+
+}
