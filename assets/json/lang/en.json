@@ -90,5 +90,13 @@
         "vertical": "vertical",
         "horizontal": "horizontal",
         "square": "square"
+    },
+    "alerts": {
+        "success": "Success",
+        "info": "Info",
+        "warning": "Warning",
+        "error": "Error",
+        "placeAdded": "Place added successfully",
+        "placeUpdated": "Place updated successfully"
     }
 }

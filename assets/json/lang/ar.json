@@ -90,5 +90,13 @@
         "vertical": "رأسي",
         "horizontal": "افقي",
         "square": "مربع"
+    },
+    "alerts": {
+        "success": "تم بنجاح",
+        "info": "بيانات",
+        "warning": "تحذير",
+        "error": "خطأ",
+        "placeAdded": "تم إضافة المكان بنجاح",
+        "placeUpdated": "تم تعديل المكان بنجاح"
     }
 }

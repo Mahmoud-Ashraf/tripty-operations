@@ -14,12 +14,17 @@ import useHTTP from '@/hooks/use-http';
 import MenuForm from '../Forms/MenuForm/MenuForm';
 import Loader from '../UI/Loader/Loader';
 import { useRouter } from 'next/router';
+import Alert from '../UI/Alert/Alert';
+import useTranslate from '@/hooks/use-translate';
 
 const AddPlace = ({ place }: any) => {
     const { isLoading, error, sendRequest } = useHTTP();
+    const { translate } = useTranslate();
     const router = useRouter();
     const formRef = useRef<HTMLFormElement>(null);
     const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+    const [alertType, setAlertType] = useState<'warning' | 'error' | 'success' | 'info' | ''>('');
+    const [alertMessage, setAlertMessage] = useState('');
     const initialPlace = {
         name: '',
         name_ar: '',
@@ -59,6 +64,15 @@ const AddPlace = ({ place }: any) => {
     //     setPlaceData({ ...placeData, [name]: files });
     // }
 
+    const toggleAlert = (type: 'success' | 'warning' | 'info' | 'error' | '', message: string) => {
+        setAlertType(type);
+        setAlertMessage(message);
+        const timer = setTimeout(() => {
+            setAlertType('');
+            setAlertMessage('');
+        }, 5000);
+    }
+
     const addPlace = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (place) {
@@ -76,7 +90,7 @@ const AddPlace = ({ place }: any) => {
                 method: 'POST',
                 body
             },
-            (data: any) => setPlaceData(initialPlace),
+            (data: any) => { setPlaceData(initialPlace); toggleAlert('success', translate('alerts.placeAdded')) },
             (err: any) => console.error(err)
         )
     }
@@ -89,7 +103,7 @@ const AddPlace = ({ place }: any) => {
                 method: 'POST',
                 body
             },
-            (data: any) => router.push('/'),
+            (data: any) => { toggleAlert('success', translate('alerts.placeUpdated')); router.push('/') },
             (err: any) => console.error(err)
         )
     }
@@ -129,6 +143,7 @@ const AddPlace = ({ place }: any) => {
     };
 
     useEffect(() => {
+        // toggleAlert('success', translate('alerts.placeUpdated'));
         if (place)
             setPlaceData(place)
     }, [place])
@@ -139,6 +154,7 @@ const AddPlace = ({ place }: any) => {
                 <title>Tripty - Operations - Add New Place</title>
             </Head>
             {isLoading && <Loader full />}
+            {alertMessage && alertType && <Alert message={alertMessage} style={alertType} />}
             <form ref={formRef} onSubmit={addPlace}>
                 <SubHeading text="subheadings.generalInfo" />
                 <GeneralInfoForm data={placeData} handleChange={handleInputChange} />
