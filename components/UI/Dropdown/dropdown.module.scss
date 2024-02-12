@@ -1,0 +1,22 @@
+@import '@/styles/Utils/variables';
+
+.container {
+    position: relative;
+}
+
+.toggle {
+    padding: .5rem;
+    cursor: pointer;
+}
+
+.menu {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    width: max-content;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: #f7edff;
+    z-index: 9;
+}

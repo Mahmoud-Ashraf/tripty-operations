@@ -12,6 +12,12 @@
     width: 100%;
     z-index: 9;
 
+    .end {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+
     .icons {
         display: flex;
         justify-content: space-between;
@@ -65,5 +71,22 @@
 
     &.pending {
         color: $pending;
+    }
+}
+
+.notification {
+    color: $main-color;
+    padding-bottom: .5rem;
+    border-bottom: 1px solid lighten($main-color, 40);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+
+    .unread {
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        background-color: $rejected;
     }
 }
