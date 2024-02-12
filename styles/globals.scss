@@ -45,3 +45,15 @@ input[type="time"] {
     -moz-appearance: textfield;
     /* Remove default styles for Firefox */
 }
+
+.ar-right {
+    right: 0;
+    left: unset;
+}
+
+html[lang="ar"] {
+    .ar-right {
+        right: unset;
+        left: 0;
+    }
+}
