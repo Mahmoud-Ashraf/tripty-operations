@@ -5,8 +5,8 @@ export default async function handler(
     res: NextApiResponse
 ) {
     const { headers, method } = req;
-    const { locale, notificationId } = req.query;
-
+    const { notificationId } = req.query;
+    console.log(notificationId);
     try {
         const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
         const response = await fetch(baseUrl + `admin/notifications/${notificationId}`, {

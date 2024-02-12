@@ -55,14 +55,15 @@ const Header = ({ place }: any) => {
     }
 
     const handleNotificationClick = async (notification: any) => {
-        await sendRequest(
-            {
-                url: `/api/notifications/${notification.id}`,
-                method: 'GET'
-            },
-            (data: any) => getNotifications(),
-            (err: any) => console.error(err)
-        )
+        if (!notification.read_at)
+            await sendRequest(
+                {
+                    url: `/api/notifications/${notification.id}`,
+                    method: 'GET'
+                },
+                (data: any) => getNotifications(),
+                (err: any) => console.error(err)
+            )
         router.push(`/editplace/${notification.place_id}`);
     }
 
